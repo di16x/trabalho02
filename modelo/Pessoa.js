@@ -57,4 +57,12 @@ export default class Pessoa{
     set telefone (novotelefone){
        this.#telefone = novotelefone; 
     }
+
+    toString(){
+        return `Nome: ${this.#nome} 
+Senha: ${this.#senha} 
+CPF: ${this.#cpf} 
+Email: ${this.#email }
+Telefone: ${this.#telefone}\n`
+    }
 }

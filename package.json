@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/di16x/trabalho02/issues"
   },
-  "homepage": "https://github.com/di16x/trabalho02#readme"
+  "homepage": "https://github.com/di16x/trabalho02#readme",
+  "dependencies": {
+    "mysql2": "^3.11.3"
+  }
 }
