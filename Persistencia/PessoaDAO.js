@@ -23,9 +23,39 @@ export default class PessoaDAO {
     }
     }
 
-    async gravar (pessoa){}
+    async gravar (pessoa){
+        if (pessoa instanceof Pessoa){
+            const conexao = await conectar();
+            const sql = `INSERT INTO pessoa (nome,senha,cpf,email,telefone)VALUES (?,?,?,?,?);`;
+            const parametros = [
+                pessoa.nome,
+                pessoa.senha,
+                pessoa.cpf,
+                pessoa.email,
+                pessoa.telefone
+            ];
+            await conexao.execute(sql,parametros);
+            await global.poolConexoes.release(conexao);
+        }
+    }
 
-    async alterar (pessoa){}
+    async alterar (pessoa){
+        if (pessoa instanceof Pessoa){
+            const conexao = await conectar();
+            const sql = `UPDATE pessoa SET nome =?,
+                        senha = ?
+                        email =?
+                        telefone =?
+                        WHERE cpf = ?;`;
+            const parametros = [
+                pessoa.nome,
+                pessoa.senha,
+                pessoa.email,
+                pessoa.telefone
+                pessoa.cpf
+                        ];
+
+    }
 
     async excluir (pessoa){}
 
