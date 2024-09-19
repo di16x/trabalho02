@@ -9,12 +9,15 @@ export default class PessoaDAO {
     async init (){
         try {
                 const conexao = await conectar();
-                const sql = `CREATE TABLE IF NOT EXISTS pessoa
+                const sql = `
+                CREATE TABLE IF NOT EXISTS pessoa(
                     nome VARCHAR (50) NOT NULL,
                     senha VARCHAR (10) NOT NULL,
                     cpf VARCHAR (14) NOT NULL PRIMARY KEY,
                     email VARCHAR (10) NOT NULL,
-                    telefone INT (10) NOT NULL);`;
+                    telefone INT (10) NOT NULL 
+                        );
+                    `;
         await conexao.execute(sql);
         await global.poolConexoes.releaseConnection(conexao);
         console.log("Banco de dados iniciado!")
