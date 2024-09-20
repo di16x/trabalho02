@@ -87,7 +87,7 @@ export default class PessoaDAO {
             sql = `SELECT * FROM pessoa order by nome;`;
         }
         const conexao = await conectar();
-        const [registros] = await conexao.execute(sql);
+        const [registros] = await conexao.execute(sql,parametros);
         let listaPessoas = [];
         for (const registro of registro){
             const pessoa = new Pessoa(
