@@ -1,10 +1,11 @@
-import Pessoa from "./modelo/Pessoa.js";
+import express from "express";
 
+const app = express();
+const host = '0.0.0.0';
+const porta = 4000;
 
-const pessoa = new Pessoa ("Guga", "1541", "12345-000", "guga_gmail.com", "(00)0123-4567");
+app.use(express.json());
 
-pessoa.incluir().then(() => {
-    console.log ("Pessoa resgistrada!")
-}).catch((erro) => {
-    console.log("Algo não saiu como o previsto!"+ erro);
-})  ;
+app.listen(porta,host, () => {
+    console.log(`Servidor iniciado em http://${porta}`);
+})

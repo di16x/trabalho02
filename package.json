@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/di16x/trabalho02#readme",
   "dependencies": {
+    "express": "^4.21.0",
     "mysql2": "^3.11.3"
   }
 }
