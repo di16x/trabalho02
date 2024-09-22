@@ -67,6 +67,17 @@ CPF: ${this.#cpf}
 Email: ${this.#email }
 Telefone: ${this.#telefone}\n`
     }
+
+    toJSON(){
+        return {
+            nome:this.#nome,
+            senha:this.#senha,
+            cpf:this.#cpf,
+            email:this.#email,
+            telefone:this.#telefone
+        }
+    }
+
     async incluir (){
         const pessDAO = new PessoaDAO();
         await pessDAO.gravar(this);
