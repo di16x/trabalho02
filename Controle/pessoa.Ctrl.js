@@ -137,7 +137,7 @@ export default class PessoaCtrl{
             }).catch((erro) =>{
                 return resposta.status(500).json({
                     "status:":false,
-                    "mensagem": "Erro ao consultar a lista de pessoas cadastradas" + erro.message
+                    "mensagem": "Erro ao consultar a lista de pessoas cadastradas " + erro.message
                 })
             })
         } else {
