@@ -47,10 +47,10 @@ export default class PessoaDAO {
             const conexao = await conectar();
             const sql = `UPDATE pessoa SET 
                         nome =?,
-                        senha = ?,
+                        senha =?,
                         email =?,
-                        telefone =?,
-                        WHERE cpf = ?;`;
+                        telefone =?
+                        WHERE cpf =?;`;
             const parametros = [
                 pessoa.nome,
                 pessoa.senha,
@@ -69,9 +69,7 @@ export default class PessoaDAO {
         if(pessoa instanceof Pessoa){
             const conexao = await conectar();
             const sql = `DELETE FROM pessoa WHERE cpf = ?;`;
-            const parametros = [
-                pessoa.cpf
-            ];
+            const parametros = [pessoa.cpf];
             await conexao.execute(sql, parametros);
             await global.poolConexoes.releaseConnection(conexao);
         }
@@ -81,7 +79,7 @@ export default class PessoaDAO {
         let sql = "";
         let parametros = [];
         if (termoBusca){
-            sql = `SELECT * FROM pessoa WHERE cpf ? order by nome;`;
+            sql = `SELECT * FROM pessoa WHERE cpf = ? order by nome;`;
             parametros.push(termoBusca);
         }
         else { 

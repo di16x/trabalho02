@@ -62,7 +62,7 @@ export default class PessoaCtrl{
                 }).catch((erro) => {
                     resposta.status(500).json({
                     "status": false,
-                    "mensagem": "Erro ao alterar a pessoa" + erro.message
+                    "mensagem": "Erro ao alterar a pessoa " + erro.message
                 })
             })
         }
@@ -82,49 +82,39 @@ export default class PessoaCtrl{
             }      
         }
 
-    excluir(requisicao,resposta){
-    
-        if(requisicao.method == "DELETE" && requisicao.is("application/json")){
-            const dados = requisicao.body;
-            const nome = dados.nome;
-            const senha = dados.senha;
-            const cpf = dados.cpf;
-            const email = dados.email;
-            const telefone = dados.telefone;
-
-            if (cpf){
-                const pessoa = new Pessoa(cpf);
-                pessoa.excluir().then(()=> {
-                    resposta.status(200).json({
-                        "status" : true,
-                        "mensagem":"Cliente excluido com sucesso!"
-
-                    });
-                }).catch((erro) => {
-                    resposta.status(500).json({
-                    "status": false,
-                    "mensagem": "Erro ao alterar a pessoa" + erro.message
-                })
-            })
-        }
-
-            else{
-                resposta.status(400).json({
-                    "status" : false,
-                    "mensagem" : "Requisição mal sucedida!"
-                })
-            }
-        }
-            else{
-                resposta.status(405).json({
-                    "status": false,
-                    "mensagem":"Requisição inválida!"
-                });
-                
-            }      
+        excluir(requisicao, resposta) {
+            if (requisicao.method == "DELETE" && requisicao.is("application/json")) {
+                const dados = requisicao.body;
+                const cpf = dados.cpf; 
         
-            
+                if (cpf) {
+                    const pessoa = new Pessoa(cpf); 
+                    pessoa.excluir().then(() => {
+                        resposta.status(200).json({
+                            "status": true,
+                            "mensagem": "Cliente excluído com sucesso!"
+                        });
+                    }).catch((erro) => {
+                        resposta.status(500).json({
+                            "status": false,
+                            "mensagem": "Erro ao excluir a pessoa: " + erro.message
+                        })
+                    })
+                } 
+                else {
+                    resposta.status(400).json({
+                        "status": false,
+                        "mensagem": "CPF não fornecido."
+                    });
+                }
+            } else {
+                resposta.status(405).json({
+                    "status": false,
+                    "mensagem": "Método não permitido."
+                });
+            }
         }
+        
     
 
     consultar(requisicao,resposta) { 
