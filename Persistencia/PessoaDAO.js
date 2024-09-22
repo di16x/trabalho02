@@ -45,10 +45,11 @@ export default class PessoaDAO {
     async alterar (pessoa){
         if (pessoa instanceof Pessoa){
             const conexao = await conectar();
-            const sql = `UPDATE pessoa SET nome =?,
-                        senha = ?
-                        email =?
-                        telefone =?
+            const sql = `UPDATE pessoa SET 
+                        nome =?,
+                        senha = ?,
+                        email =?,
+                        telefone =?,
                         WHERE cpf = ?;`;
             const parametros = [
                 pessoa.nome,

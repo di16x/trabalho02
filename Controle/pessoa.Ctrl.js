@@ -25,6 +25,12 @@ export default class PessoaCtrl{
                     })
                 });
             }
+            else{
+                resposta.status(400).json({
+                    "status": false,
+                    "mensagem":"Requisição invalida! Informe todos os dados"
+                })
+            }
 
         }
         else {
