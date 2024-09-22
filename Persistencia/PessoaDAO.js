@@ -15,7 +15,7 @@ export default class PessoaDAO {
                     senha VARCHAR (10) NOT NULL,
                     cpf VARCHAR (14) NOT NULL PRIMARY KEY,
                     email VARCHAR (10) NOT NULL,
-                    telefone INT (10) NOT NULL 
+                    telefone INT NOT NULL (10) 
                         );
                     `;
         await conexao.execute(sql);

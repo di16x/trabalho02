@@ -144,11 +144,3 @@ export default class PessoaCtrl{
         }
     }
 }
-    
-
-    
-    
-
-
-
-
